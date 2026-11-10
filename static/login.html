@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="hi" translate="no" class="notranslate">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate">
+  <title>Sign in or sign up | Bol Khata</title>
+  <link rel="stylesheet" href="/static/fonts/fonts.css?v=bahi1">
+  <link rel="stylesheet" href="/static/style.css?v=bahi1">
+  <link rel="stylesheet" href="/static/login.css?v=bahi1">
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="login-page">
+  <main class="login">
+    <section class="login-card" aria-labelledby="loginTitle">
+      <img class="login-logo" src="/static/icon.svg" alt="" width="76" height="76">
+      <h1 id="loginTitle" data-i18n="brand">बोल खाता</h1>
+      <p class="login-sub"><span data-i18n="loginSub"></span><span class="login-shop" id="shopName" hidden></span></p>
+
+      <ul class="login-points">
+        <li><span aria-hidden="true">🎙️</span><span data-i18n="loginP1"></span></li>
+        <li><span aria-hidden="true">🌐</span><span data-i18n="loginP2"></span></li>
+        <li><span aria-hidden="true">🔒</span><span data-i18n="loginP3"></span></li>
+      </ul>
+
+      <div class="login-google" id="googleBtn" aria-live="polite"></div>
+      <p class="login-error" id="loginError" role="alert" hidden></p>
+
+      <p class="login-note"><span aria-hidden="true">🛡️</span> <span data-i18n="loginOwnerOnly"></span></p>
+      <p class="login-note first" id="firstNote" hidden data-i18n="loginFirst"></p>
+      <p class="login-note first" id="inviteNote" hidden data-i18n="loginInvite"></p>
+    </section>
+
+    <nav class="login-langs" id="langs" aria-label="Language"></nav>
+  </main>
+  <script type="module" src="/static/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.env
+.venv/
+data/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local database and secret keys
+data/*.db
+data/secret.key

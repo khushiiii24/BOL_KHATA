@@ -1,0 +1,17 @@
+# Only used when deploying online (Vercel). On your laptop, start.bat uses requirements.txt.
+[project]
+name = "bol-khata"
+version = "3.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn>=0.27",
+  "requests>=2.31",
+  "python-dotenv>=1.0",
+  "python-multipart>=0.0.9",
+  "google-auth>=2.20",
+  "itsdangerous>=2.1",
+]
+
+[tool.vercel]
+entrypoint = "app.main:app"

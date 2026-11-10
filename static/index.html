@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="hi" translate="no" class="notranslate">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="google" content="notranslate">
+  <meta name="theme-color" content="#8E1A22">
+  <title>Bol Khata</title>
+  <link rel="stylesheet" href="/static/fonts/fonts.css?v=bahi1">
+  <link rel="stylesheet" href="/static/style.css?v=bahi1">
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <script src="/static/vendor/qrcode.js" defer></script>
+</head>
+<body>
+<div class="stage">
+
+  <!-- ===== Left side on big screens: what this is (for judges and first-time visitors) ===== -->
+  <aside class="intro" aria-label="About Bol Khata">
+    <img src="/static/icon.svg" alt="" width="64" height="64" class="intro-logo">
+    <h1 data-i18n="brand">बोल खाता</h1>
+    <p class="intro-sub" data-i18n="introSub"></p>
+    <ul class="intro-list">
+      <li><span>🎙️</span><div><b data-i18n="f1t"></b><small data-i18n="f1p"></small></div></li>
+      <li><span>🔁</span><div><b data-i18n="f2t"></b><small data-i18n="f2p"></small></div></li>
+      <li><span>🤝</span><div><b data-i18n="f3t"></b><small data-i18n="f3p"></small></div></li>
+      <li><span>📲</span><div><b data-i18n="f4t"></b><small data-i18n="f4p"></small></div></li>
+      <li><span>🌐</span><div><b data-i18n="f5t"></b><small data-i18n="f5p"></small></div></li>
+    </ul>
+    <p class="intro-gnani"><span>Gnani Prisma</span> <span>Gnani Timbre</span></p>
+  </aside>
+
+  <!-- ===== The app ===== -->
+  <div class="phone" id="app">
+    <header class="top">
+      <button type="button" class="brandbtn" id="shopTop" data-i18n-aria="stShop">
+        <img src="/static/icon.svg" alt="" width="38" height="38">
+        <span><b id="shopName">Bol Khata</b><small id="greet">नमस्ते</small></span>
+      </button>
+      <div class="top-actions">
+        <button type="button" class="pillbtn" id="langBtn" data-i18n-aria="chooseLang">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <span id="langName">हिंदी</span>
+        </button>
+        <button type="button" class="mebtn" id="meBtn" data-i18n-aria="navMore"><img id="meImg" alt="" hidden referrerpolicy="no-referrer"><span id="meInitial">⚙</span></button>
+      </div>
+    </header>
+
+    <div class="update-banner" id="updateBanner" role="alert" hidden>
+      <span data-i18n="updateBanner"></span>
+      <button type="button" id="reloadBtn" data-i18n="reload"></button>
+    </div>
+
+    <main class="views" id="views">
+      <!-- ---------------- HOME ---------------- -->
+      <section class="view" id="view-home" aria-labelledby="tab-home">
+        <div class="hero" id="hero">
+          <div class="hero-row">
+            <span class="hero-label" data-i18n="totalDue"></span>
+            <button type="button" class="hear" id="hearBtn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+              <span data-i18n="summaryBtn"></span>
+            </button>
+          </div>
+          <div class="hero-amt" id="heroAmt">₹0</div>
+          <div class="hero-sub" id="heroSub"></div>
+          <div class="hero-today">
+            <div><small data-i18n="todayGiven"></small><b id="todayGiven">₹0</b></div>
+            <div><small data-i18n="todayGot"></small><b id="todayGot">₹0</b></div>
+            <div><small data-i18n="rate30"></small><b id="rate30">—</b></div>
+          </div>
+        </div>
+
+        <div class="alerts" id="alerts"></div>
+
+        <section class="card" aria-labelledby="dueTitle">
+          <header class="card-head"><h2 id="dueTitle" data-i18n="dueTitle"></h2><span class="count" id="dueCount"></span></header>
+          <ul class="rows" id="dueList"></ul>
+          <div class="empty-mini" id="dueEmpty" hidden>
+            <span aria-hidden="true">🗓️</span>
+            <div><b data-i18n="dueEmpty"></b><small data-i18n="dueEmptyHint"></small></div>
+          </div>
+          <div class="upcoming" id="upcoming" hidden>
+            <h3 data-i18n="upcomingTitle"></h3>
+            <ul class="rows small" id="upcomingList"></ul>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="recentTitle" id="recentCard">
+          <header class="card-head"><h2 id="recentTitle" data-i18n="recentTitle"></h2><button type="button" class="link" id="seeKhata" data-i18n="seeKhata"></button></header>
+          <ul class="rows" id="recentList"></ul>
+        </section>
+
+        <section class="start" id="startEmpty" hidden>
+          <div class="start-art" aria-hidden="true">🎙️</div>
+          <h2 data-i18n="emptyTitle"></h2>
+          <p data-i18n="emptyText"></p>
+          <div class="start-actions">
+            <button type="button" class="btn primary" id="startMic" data-i18n="startSpeaking"></button>
+            <button type="button" class="btn" id="startSample" data-i18n="loadSample"></button>
+          </div>
+        </section>
+
+        <section class="try" aria-labelledby="tryTitle">
+          <h3 id="tryTitle" data-i18n="trySay"></h3>
+          <ul id="tries"></ul>
+        </section>
+      </section>
+
+      <!-- ---------------- KHATA (customers) ---------------- -->
+      <section class="view" id="view-khata" hidden>
+        <div class="search-row">
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="search" type="search" autocomplete="off" data-i18n-ph="searchPh">
+          </label>
+          <select id="sort" data-i18n-aria="sortLabel">
+            <option value="recent" data-i18n="sortRecent"></option>
+            <option value="highest" data-i18n="sortHighest"></option>
+            <option value="oldest" data-i18n="sortOldest"></option>
+            <option value="trust" data-i18n="sortTrust"></option>
+            <option value="name" data-i18n="sortName"></option>
+          </select>
+        </div>
+        <div class="filters" id="filters" role="group"></div>
+        <ul class="cust-list" id="custList"></ul>
+        <div class="empty" id="khataEmpty" hidden>
+          <div class="empty-art" aria-hidden="true">📒</div>
+          <h2 data-i18n="emptyTitle"></h2>
+          <p data-i18n="emptyText"></p>
+          <button type="button" class="btn primary" data-sample data-i18n="loadSample"></button>
+        </div>
+        <p class="nomatch" id="noMatch" hidden data-i18n="noMatch"></p>
+      </section>
+
+      <!-- ---------------- HISAAB (reports) ---------------- -->
+      <section class="view" id="view-hisaab" hidden>
+        <div class="report" id="report"></div>
+      </section>
+
+      <!-- ---------------- MORE (settings) ---------------- -->
+      <section class="view" id="view-more" hidden>
+        <section class="card account" id="accountCard"></section>
+
+        <section class="card">
+          <header class="card-head"><h2 data-i18n="stShop"></h2></header>
+          <form class="form" id="profileForm" autocomplete="off">
+            <label><span data-i18n="shopName"></span><input id="pfShop" maxlength="80" data-i18n-ph="shopPh"></label>
+            <label><span data-i18n="upiIdLabel"></span><input id="pfUpi" maxlength="130" inputmode="email" data-i18n-ph="upiIdPh"><small data-i18n="upiIdHelp"></small></label>
+            <button type="submit" class="btn primary" data-i18n="save"></button>
+          </form>
+        </section>
+
+        <section class="card">
+          <header class="card-head"><h2 data-i18n="stVoice"></h2></header>
+          <label class="toggle-row">
+            <span><b data-i18n="talkMode"></b><small data-i18n="talkModeHelp"></small></span>
+            <input type="checkbox" id="talkDefault" role="switch">
+          </label>
+          <button type="button" class="row-btn" id="moreLang"><span data-i18n="chooseLang"></span><b id="moreLangName"></b></button>
+        </section>
+
+        <section class="card">
+          <header class="card-head"><h2 data-i18n="rpTools"></h2></header>
+          <div class="tool-list">
+            <a class="row-btn" href="/api/export.csv" download><span data-i18n="exportCsv"></span><i>⬇</i></a>
+            <button type="button" class="row-btn" id="archivesBtn"><span data-i18n="savedKhatas"></span><i id="archiveCount"></i></button>
+            <button type="button" class="row-btn" id="newKhataBtn"><span data-i18n="newKhata"></span><i>＋</i></button>
+            <button type="button" class="row-btn" data-sample><span data-i18n="loadSample"></span><i>🧪</i></button>
+          </div>
+          <p class="note" data-i18n="syntheticNote"></p>
+        </section>
+
+        <p class="version" id="version"></p>
+      </section>
+    </main>
+
+    <!-- ---------------- bottom tabs + mic ---------------- -->
+    <nav class="tabbar" aria-label="Main">
+      <div class="side-brand" aria-hidden="true"><img src="/static/icon.svg" alt="" width="40" height="40"><span><b data-i18n="brand">बोल खाता</b><small data-i18n="tagline"></small></span></div>
+      <button type="button" data-tab="home" id="tab-home" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg><span data-i18n="navHome"></span>
+      </button>
+      <button type="button" data-tab="khata" id="tab-khata">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6zM6 3v18M10 8h5M10 12h5"/></svg><span data-i18n="navKhata"></span>
+      </button>
+      <button type="button" class="fab" id="micFab" data-i18n-aria="micSpeak">
+        <span class="fab-ring" aria-hidden="true"></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>
+        <span class="fab-label" data-i18n="vsTitle"></span>
+      </button>
+      <button type="button" data-tab="hisaab" id="tab-hisaab">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i18n="navHisaab"></span>
+      </button>
+      <button type="button" data-tab="more" id="tab-more">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg><span data-i18n="navMore"></span>
+      </button>
+      <p class="side-foot"><span data-i18n="sideHint"></span><b>Gnani Prisma · Timbre</b></p>
+    </nav>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- ---------------- voice conversation ---------------- -->
+    <div class="sheet voice" id="voiceSheet" role="dialog" aria-modal="true" aria-labelledby="vsTitle" hidden>
+      <header class="sheet-bar">
+        <button type="button" class="iconbtn" id="vsClose" data-i18n-aria="closeAria">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+        <h2 id="vsTitle" data-i18n="vsTitle"></h2>
+        <label class="talk-switch" title="">
+          <input type="checkbox" id="talkMode" role="switch">
+          <span class="track" aria-hidden="true"><span></span></span>
+          <span class="talk-label" data-i18n="talkModeShort"></span>
+        </label>
+      </header>
+      <div class="convo" id="convo" aria-live="polite"></div>
+      <div class="vs-bottom">
+        <p class="vs-status" id="vsStatus"></p>
+        <p class="vs-hint" id="vsHint"></p>
+        <div class="vs-controls">
+          <button type="button" class="iconbtn soft" id="vsKeyboard" data-i18n-aria="typeInstead">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg>
+          </button>
+          <button type="button" class="bigmic" id="vsMic" data-i18n-aria="micSpeak">
+            <span class="halo" aria-hidden="true"></span>
+            <svg class="i-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>
+            <svg class="i-stop" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
+            <span class="i-wait" aria-hidden="true"><i></i><i></i><i></i></span>
+          </button>
+          <button type="button" class="iconbtn soft" id="vsUndo" data-i18n-aria="undo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+          </button>
+        </div>
+        <form class="vs-type" id="vsType" hidden autocomplete="off">
+          <input id="vsInput" data-i18n-ph="typePh" enterkeyhint="send">
+          <button type="submit" class="iconbtn" data-i18n-aria="sendAria">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-6 16-3-7z"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ---------------- customer page ---------------- -->
+    <div class="sheet cust" id="custSheet" role="dialog" aria-modal="true" aria-labelledby="custTitle" hidden>
+      <header class="sheet-bar">
+        <button type="button" class="iconbtn" id="custBack" data-i18n-aria="back">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <h2 id="custTitle"></h2>
+        <button type="button" class="iconbtn" id="custRename" data-i18n-aria="rename">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>
+        </button>
+      </header>
+      <div class="sheet-body" id="custBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== small windows ===================== -->
+<dialog class="modal" id="qrDialog" aria-labelledby="qrTitle">
+  <h2 id="qrTitle" data-i18n="upiTitle"></h2>
+  <div id="qrBody"></div>
+</dialog>
+
+<dialog class="modal" id="langDialog" aria-labelledby="langTitle">
+  <h2 id="langTitle" data-i18n="chooseLang"></h2>
+  <div class="lang-grid" id="langGrid"></div>
+</dialog>
+
+<dialog class="modal" id="shopDialog" aria-labelledby="shopTitle">
+  <div class="modal-art" aria-hidden="true">🏪</div>
+  <h2 id="shopTitle"></h2>
+  <p id="shopText" data-i18n="welcomeText"></p>
+  <form class="form" id="shopForm" autocomplete="off">
+    <label><span data-i18n="shopName"></span><input id="shopInput" maxlength="80" required data-i18n-ph="shopPh"></label>
+    <label><span data-i18n="upiIdLabel"></span><input id="shopUpi" maxlength="130" inputmode="email" data-i18n-ph="upiIdPh"></label>
+    <div class="modal-actions">
+      <button type="button" class="btn" data-close id="shopLater"></button>
+      <button type="submit" class="btn primary" id="shopSave"></button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="newKhataDialog" aria-labelledby="nkTitle">
+  <div class="modal-art" aria-hidden="true">🗂️</div>
+  <h2 id="nkTitle" data-i18n="arNewTitle"></h2>
+  <p data-i18n="arNewText"></p>
+  <div class="modal-actions">
+    <button type="button" class="btn" data-close data-i18n="cancel"></button>
+    <button type="button" class="btn primary" id="nkConfirm" data-i18n="arConfirm"></button>
+  </div>
+</dialog>
+
+<dialog class="modal wide" id="archiveDialog" aria-labelledby="arTitle">
+  <h2 id="arTitle" data-i18n="arTitle"></h2>
+  <div id="arBody"></div>
+  <div class="modal-actions"><button type="button" class="btn" data-close data-i18n="closeAria"></button></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<script type="module" src="/static/app.js"></script>
+</body>
+</html>

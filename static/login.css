@@ -1,0 +1,30 @@
+/* The sign-in page: the closed bahi-khata. A red cloth cover with zari stitching, and a paper label on it. */
+.login-page {
+  min-height: 100vh; display: grid; place-items: center; padding: 28px 16px; position: relative; overflow-x: hidden;
+  background: var(--cloth); background-attachment: fixed;
+}
+.login-page::before {
+  content: ""; position: fixed; inset: 12px; border: 2px dashed rgba(226, 176, 75, 0.7); border-radius: 18px; pointer-events: none;
+}
+.login { position: relative; z-index: 1; width: min(440px, 100%); display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.login-card {
+  width: 100%; padding: 28px 26px 22px; border-radius: 8px; text-align: center; animation: rise 360ms ease-out;
+  background-color: var(--kagaz); background-image: var(--grain); color: var(--ink);
+  box-shadow: 0 0 0 6px rgba(92, 14, 20, 0.35), 0 0 0 7px rgba(226, 176, 75, 0.8), 0 34px 70px -26px rgba(20, 0, 0, 0.75);
+}
+.login-logo { width: 76px; height: 76px; border-radius: 16px; box-shadow: 0 14px 26px -12px rgba(70, 10, 15, 0.8); }
+.login-card h1 { margin: 12px 0 0; font: 700 2.4rem/1.1 var(--hand); color: var(--lal); }
+.login-sub { margin: 4px 0 0; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+.login-shop { font: 700 1.2rem/1.2 var(--hand); color: var(--ink); }
+.login-points { position: relative; list-style: none; margin: 20px 0 0; padding: 4px 4px 4px 22px; text-align: left; display: flex; flex-direction: column; border-top: 1.5px solid rgba(178, 30, 38, 0.45); }
+.login-points::before { content: ""; position: absolute; top: 0; bottom: 0; left: 4px; width: 4px; border-left: 1px solid var(--margin-red); border-right: 1px solid var(--margin-red); }
+.login-points li { display: flex; align-items: center; gap: 12px; padding: 9px 0; font-weight: 600; font-size: var(--t-sm); border-bottom: 1px solid var(--rule); }
+.login-points li:last-child { border-bottom: 0; }
+.login-points li span:first-child { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--surface-2); font: 1.05rem/1 var(--emoji); }
+.login-google { margin: 20px auto 0; min-height: 44px; display: flex; justify-content: center; }
+.login-error { margin: 12px 0 0; padding: 10px 12px; border-radius: 4px 8px 8px 4px; border-left: 4px solid var(--due); background: var(--due-bg); color: var(--due); font-size: var(--t-sm); font-weight: 600; }
+.login-note { margin: 16px 0 0; font-size: var(--t-xs); color: var(--muted); }
+.login-note.first { margin-top: 6px; padding: 8px 10px; border-radius: 8px; background: var(--warn-bg); color: var(--warn); }
+.login-langs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.login-langs button { border: 1px solid rgba(226, 176, 75, 0.55); background: rgba(0, 0, 0, 0.18); color: var(--cream); border-radius: 8px; padding: 5px 12px; font: 600 var(--t-sm)/1.4 var(--display); }
+.login-langs button[aria-current="true"] { background: var(--zari); border-color: var(--zari); color: var(--lal-deep); }
